@@ -1,8 +1,11 @@
-export ZOPEN_STABLE_URL="https://github.com/apache/ant/archive/refs/tags/rel/1.10.14.tar.gz"
+export ZOPEN_STABLE_URL="https://downloads.apache.org/ant/binaries/apache-ant-1.10.13-bin.tar.gz"
 export ZOPEN_STABLE_DEPS="java"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_RUNTIME_DEPS="java"
 export ZOPEN_CATEGORIES="development"
+
+rm -f apache-ant-1.10.13-bin
+ln -s apache-ant-1.10.13 apache-ant-1.10.13-bin
 
 zopen_check_results()
 {
@@ -17,9 +20,33 @@ zopen_check_results()
   echo "expectedTotalTests:1"
 }
 
+export ZOPEN_CONFIGURE="skip"
+export ZOPEN_CONFIGURE_OPTS=""
+
+export ZOPEN_MAKE="skip"
+export ZOPEN_MAKE_OPTS=""
+
+export ZOPEN_CHECK="skip"
+export ZOPEN_CHECK_OPTS=""
+
+export ZOPEN_INSTALL="zopen_ant_install"
+
+zopen_ant_install()
+{
+  mkdir -p "$ZOPEN_INSTALL_DIR/bin" "$ZOPEN_INSTALL_DIR/lib"
+  cp -r "$PWD/bin" "$ZOPEN_INSTALL_DIR/bin/"
+  cp -r "$PWD/lib" "$ZOPEN_INSTALL_DIR/lib/"
+  return 0
+}
+
+zopen_append_to_env()
+{
+cat <<ZZ
+ANT_HOME="\$PWD"
+ZZ
+}
+
 zopen_get_version()
 {
-  # Modify to echo the version of your tool/library
-  # Rather than hardcoding the version, obtain the version by running the tool/library
-  echo "1.0.0"
+  bin/ant -version | head -1 | awk ' { print $4; } '
 }
