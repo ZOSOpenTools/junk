@@ -4,6 +4,8 @@ export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_RUNTIME_DEPS="java"
 export ZOPEN_CATEGORIES="development"
 
+export ZOPEN_NAME="ant"
+
 rm -f apache-ant-1.10.13-bin
 ln -s apache-ant-1.10.13 apache-ant-1.10.13-bin
 
