@@ -8,7 +8,7 @@ export ZOPEN_RUNTIME_DEPS="java"
 export ZOPEN_CATEGORIES="development"
 
 rm -f "apache-ant-${ANT_VERSION}-bin"
-ln -s "apache-ant-${ANT_VERSION} apache-ant-${ANT_VERSION}-bin"
+ln -s "apache-ant-${ANT_VERSION}" "apache-ant-${ANT_VERSION}-bin"
 
 zopen_check_results()
 {
@@ -16,7 +16,7 @@ zopen_check_results()
   pfx="$2"
   chk="$1/$2_check.log"
 
-  # Echo the following information to gauge build health
+  # Needs to be enhanced with tests
   echo "actualFailures:0"
   echo "totalTests:1"
   echo "expectedFailures:0"
