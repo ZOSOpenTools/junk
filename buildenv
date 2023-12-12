@@ -36,8 +36,8 @@ export ZOPEN_INSTALL="zopen_ant_install"
 zopen_ant_install()
 {
   mkdir -p "$ZOPEN_INSTALL_DIR/bin" "$ZOPEN_INSTALL_DIR/lib"
-  cp -r "$PWD/bin" "$ZOPEN_INSTALL_DIR/bin/"
-  cp -r "$PWD/lib" "$ZOPEN_INSTALL_DIR/lib/"
+  cp -r "$PWD/bin/" "$ZOPEN_INSTALL_DIR/bin/"
+  cp -r "$PWD/lib/" "$ZOPEN_INSTALL_DIR/lib/"
   return 0
 }
 
