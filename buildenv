@@ -1,13 +1,15 @@
-export ZOPEN_STABLE_URL="https://downloads.apache.org/ant/binaries/apache-ant-1.10.13-bin.tar.gz"
+# bump: ant-version /ANT_VERSION="(.*)"/ https://downloads.apache.org/ant/binaries/|re:/apache-ant-([\d.]+)-bin.tar.gz/|semver:*
+ANT_VERSION="1.10.13"
+
+export ZOPEN_STABLE_URL="https://downloads.apache.org/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz"
 export ZOPEN_STABLE_DEPS="java"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_RUNTIME_DEPS="java"
 export ZOPEN_CATEGORIES="development"
-
 export ZOPEN_NAME="ant"
 
-rm -f apache-ant-1.10.13-bin
-ln -s apache-ant-1.10.13 apache-ant-1.10.13-bin
+rm -f "apache-ant-${ANT_VERSION}-bin"
+ln -s "apache-ant-${ANT_VERSION}" "apache-ant-${ANT_VERSION}-bin"
 
 zopen_check_results()
 {
